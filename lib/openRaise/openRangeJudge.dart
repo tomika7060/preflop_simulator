@@ -3,7 +3,7 @@
 
 class OpenRangeJudgeData{
 
-  specialJudgeHand(int firstHandNumber,int secondHandNumber,String position,int firstSuitNumber,int secondSuitNumber){
+  specialJudgeOpenHand(int firstHandNumber,int secondHandNumber,String position,int firstSuitNumber,int secondSuitNumber){
     if (position == 'UTG'){
       if (firstSuitNumber==secondSuitNumber){
         if(firstHandNumber==12 && secondHandNumber==9 || firstHandNumber==9 && secondHandNumber==12){
@@ -265,7 +265,7 @@ class OpenRangeJudgeData{
         }
         //ここから３
         else if(firstHandNumber ==3 && secondHandNumber == 2|| firstHandNumber == 2 && secondHandNumber==3){
-          return [1,2,11];
+          return [1,3,11];
         }
         else{
           return [0];
@@ -330,10 +330,10 @@ class OpenRangeJudgeData{
           return [2,3,42];
         }
         else if(firstHandNumber==13 && secondHandNumber==3 || firstHandNumber==3 && secondHandNumber==13){
-          return [1,2,9];
+          return [1,3,9];
         }
         else if(firstHandNumber==13 && secondHandNumber==2 || firstHandNumber==2 && secondHandNumber==13){
-          return [1,2,9];
+          return [1,3,9];
         }
         //ここから１２
         else if(firstHandNumber==12 && secondHandNumber==11 || firstHandNumber==11 && secondHandNumber==12){
@@ -352,16 +352,16 @@ class OpenRangeJudgeData{
           return [2,3,15];
         }
         else if(firstHandNumber==12 && secondHandNumber==6 || firstHandNumber==6 && secondHandNumber==12){
-          return [1,2,7];
+          return [1,3,7];
         }
         else if(firstHandNumber==12 && secondHandNumber==5|| firstHandNumber==5 && secondHandNumber==12){
-          return [1,2,14];
+          return [1,3,14];
         }
         else if(firstHandNumber==12 && secondHandNumber==4 || firstHandNumber==4 && secondHandNumber==12){
-          return [1,2,5];
+          return [1,3,5];
         }
         else if(firstHandNumber==12 && secondHandNumber==2 || firstHandNumber==2 && secondHandNumber==12){
-          return [1,2,6];
+          return [1,3,6];
         }
         //ここから１１
         else if(firstHandNumber==11 && secondHandNumber==10 || firstHandNumber==10 && secondHandNumber==11){
@@ -401,7 +401,7 @@ class OpenRangeJudgeData{
 
   }
 
-  judgeHand(int firstHandNumber,int secondHandNumber,String position,int firstSuitNumber,int secondSuitNumber){
+  judgeOpenHand(int firstHandNumber,int secondHandNumber,String position,int firstSuitNumber,int secondSuitNumber){
 
     if (position == 'UTG'){
       //ポケットの時
@@ -986,7 +986,7 @@ class OpenRangeJudgeData{
         }
         //片方１０、もう片方7
         else if(firstHandNumber==10 && secondHandNumber ==7 ||firstHandNumber==7 && secondHandNumber==10){
-          return 3;
+          return 2;
         }
         //片方9、もう片方8
         else if(firstHandNumber==9 && secondHandNumber ==8 ||firstHandNumber==8 && secondHandNumber==9){
