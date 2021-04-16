@@ -673,6 +673,9 @@ class ThreeBetJudgeData {
           else if(firstHandNumber==1 && secondHandNumber==11 || firstHandNumber==11 && secondHandNumber==1){
             return [2,3,6];
           }
+          else{
+            return [0];
+          }
         }
       }
       else if(openRaisePosition=='CO'){}
