@@ -56,10 +56,15 @@ class _ThreeBetPage extends State<ThreeBetPage> with TickerProviderStateMixin{
     specialJudgeResult= threeBetJudgeData.specialJudge3bet(card1Number, card2Number, position[positionNumber], openRaisePosition[openRaiserNumber], suit1Number, suit2Number);
     if(specialJudgeResult==null){
       specialJudgeResult=[0];
+      print('特例が記述されていません');
     }
-    /*~print(specialJudgeResult);
+    if(judgeResult==null){
+      judgeResult=1;
+      print('通常の判定が記載されていません');
+    }
+    print(specialJudgeResult);
     print(judgeResult);
-    print('特定のペア'+specialJudgeResult.toString());~*/
+    print('特定のペア'+specialJudgeResult.toString());
     return Scaffold(
         appBar: AppBar(
           title: Text('3Bet',
@@ -318,7 +323,7 @@ class _ThreeBetPage extends State<ThreeBetPage> with TickerProviderStateMixin{
                       )
                     ],
                   ),
-                  SizedBox(height: 50,),
+                  SizedBox(height: 35,),
                   Column(
                     children: [
                       Row(
@@ -355,7 +360,7 @@ class _ThreeBetPage extends State<ThreeBetPage> with TickerProviderStateMixin{
                       ),
                     ],
                   ),
-                  SizedBox(height: 50,),
+                  SizedBox(height: 35,),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: Colors.white38,
@@ -377,9 +382,6 @@ class _ThreeBetPage extends State<ThreeBetPage> with TickerProviderStateMixin{
                         do {
                           positionNumber=rand3.nextInt(5)+1;
                         } while(positionNumber<=openRaiserNumber);
-                        print('positionNumber : '+positionNumber.toString()+' ポジションは'+position[positionNumber]);
-                        print('openRaiserNumber : '+openRaiserNumber.toString()+' オープンレイザーは'+openRaisePosition[openRaiserNumber]);
-                        print('矛盾なし');
 
                         if (card1Number==card2Number && suit1Number==suit2Number){
                           do {

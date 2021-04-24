@@ -1,11 +1,13 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:porker_expected_value/3bet/threeBetJudge.dart';
-import 'package:porker_expected_value/3bet/threeBetPage.dart';
-import 'package:porker_expected_value/openRaise/openRangePage.dart';
+import 'package:porker_expected_value/homePage.dart';
+import 'package:porker_expected_value/services/admob.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Admob.initialize();
   runApp(new MyApp());
 }
 
@@ -21,78 +23,41 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 class MainPage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('ホーム画面',
-            style: TextStyle(
-                fontWeight: FontWeight.w700
-            ),),
+        bottomNavigationBar:  AdmobBanner(
+          adUnitId: AdMobServiceBottom().getBannerAdUnitId(),
+          adSize: AdmobBannerSize(
+            width: MediaQuery.of(context).size.width.toInt(),
+            height: AdMobServiceBottom().getHeight(context).toInt(),
+            name: 'SMART_BANNER',
+          ),
         ),
-        body: Center(
-            child:  Column(
-              children: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white38,
-                      onPrimary: Colors.green,
-                      elevation: 16,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => OpenRaisePage()),
-                      );
-                    },
-                    child: Text('オープンレイズ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    )
+        body: SafeArea(
+          child: Column(
+            children: [
+              AdmobBanner(
+                adUnitId: AdMobServiceTop().getBannerAdUnitId(),
+                adSize: AdmobBannerSize(
+                  width: MediaQuery.of(context).size.width.toInt(),
+                  height: AdMobServiceTop().getHeight(context).toInt(),
+                  name: 'SMART_BANNER',
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white38,
-                      onPrimary: Colors.green,
-                      elevation: 16,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThreeBetPage()),
-                      );
-                    },
-                    child: Text('3Bet',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    )
-                ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white38,
-                      onPrimary: Colors.green,
-                      elevation: 16,
-                    ),
-                    onPressed: () {
+              ),
 
-                    },
-                    child: Text('4Bet',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                    )
+              Expanded(
+                child: Navigator(
+                  onGenerateRoute: (settings){
+                    Widget page = HomePage();
+                    return MaterialPageRoute(builder: (_) => page);
+                  },
                 ),
-              ],
-            ),
-
+              ),
+            ],
+          ),
         )
     );
   }

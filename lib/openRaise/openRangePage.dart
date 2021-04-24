@@ -58,6 +58,14 @@ class _OpenRaisePage extends State<OpenRaisePage> with TickerProviderStateMixin{
     // ここで判定結果を確定させる
     judgeResult= openRangeJudgeData.judgeOpenHand(card1Number,card2Number,position[positionNumber],suit1Number,suit2Number);
     specialJudgeResult= openRangeJudgeData.specialJudgeOpenHand(card1Number,card2Number,position[positionNumber],suit1Number,suit2Number);
+    if(specialJudgeResult==null){
+      specialJudgeResult=[0];
+      print('特例が記述されていません');
+    }
+    if(judgeResult==null){
+      judgeResult=1;
+      print('通常の判定が記載されていません');
+    }
     print(specialJudgeResult);
     print(judgeResult);
     print('特定のペア'+specialJudgeResult.toString());
